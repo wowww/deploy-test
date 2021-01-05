@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Chat.scss';
+
 const Chat = () => {
   return (
     <h1>Chat</h1>
