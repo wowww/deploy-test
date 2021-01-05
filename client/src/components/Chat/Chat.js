@@ -14,17 +14,21 @@ const Chat = ({ location }) => {
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
 
-    socket = io(ENDPOINT);
-    // socket = io.connect(ENDPOINT);
+    // socket = io(ENDPOINT);
+    socket = io.connect(ENDPOINT, { transports: ['websocket']});
 
     setRoom(room);
     setName(name);
     
-    socket.emit('join', { name, room }, (error) => {
-      if(error) {
-        alert(error);
-      }
+    socket.emit('join', { name, room }, ({ error }) => {
+      // if(error) {
+      //   alert(error);
+      // }
     });
+    return () => {
+      socket.emit('disconnect');
+      socket.off();
+    }
   }, [ENDPOINT, location.search]);
   
   return (
