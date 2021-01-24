@@ -9,7 +9,7 @@ import Input from '../Input/Input';
 
 import './Chat.scss';
 
-const ENDPOINT = 'localhost:4000';
+const ENDPOINT = 'localhost:3000';
 
 let socket;
 
@@ -57,8 +57,8 @@ const Chat = ({ location }) => {
     <div className="outerContainer">
       <div className="container">
           <InfoBar room={room} />
-          {/* <Messages messages={messages} name={name} /> */}
-          {/* <Input message={message} setMessage={setMessage} sendMessage={sendMessage} /> */}
+          <Messages messages={messages} name={name} />
+          <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
       </div>
       <TextContainer users={users}/>
     </div>
